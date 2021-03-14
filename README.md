@@ -32,6 +32,9 @@ Token.deployed().then(function(i) { token = i;})
 token.address
 token._totalSupply
 
+### Ressource
+suivre https://www.trufflesuite.com/docs/ganache/truffle-projects/linking-a-truffle-project
+
 # III) Lier truffle avec infura
 
 ### dans vs code
@@ -56,6 +59,6 @@ truffle migrate --reset --network infura
 -create new project
 -ENDPOINTS => Rinkeby
 
-### ressource
+### Ressource
 suivre : https://www.trufflesuite.com/tutorials/using-infura-custom-provider
 
