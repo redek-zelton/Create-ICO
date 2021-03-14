@@ -32,7 +32,7 @@ Token.deployed().then(function(i) { token = i;})
 token.address
 token._totalSupply
 
-# III) Lier
+# III) Lier truffle avec infura
 
 ### dans vs code
 npm install @truffle/hdwallet-provider
