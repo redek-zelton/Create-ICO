@@ -62,3 +62,5 @@ truffle migrate --reset --network infura
 ### Ressource
 suivre : https://www.trufflesuite.com/tutorials/using-infura-custom-provider
 
+# Info Supplémentaire
+#### Pour modifier la décimale, on a décidé de modifier dans ERC20.sol  
