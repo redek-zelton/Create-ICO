@@ -6,8 +6,8 @@ contract TDToken is ERC20 {
 
     string public _name;    //Nom token
     string public _symbol;  // Symbol
-    uint8 public _decimals; // decimals
-    uint256 public _totalSupply; //totalSupply
+    //uint8 public _decimals; // decimals
+    //uint256 public _totalSupply; //totalSupply
     address payable public Admin; // addresse de l'administrateur
 
     uint256 public convertion = 1000000000000000000; //Eth to Wei
@@ -23,12 +23,14 @@ contract TDToken is ERC20 {
     Participant[] Liste_Participant;
     //event Bought(uint256 amount);
     */
-
-    constructor(uint256 initial, address payable admin) ERC20('TDCOIN', 'TDC', 5) public {
-        _totalSupply = initial;
+    constructor(
+        uint256 initialSupply,
+        address payable admin
+    ) ERC20('TDCOIN', 'TDC') public{
         Admin = admin;
         // all ICO supply is in Admin pool
-        approve(Admin, _totalSupply);
+        approve(Admin, initialSupply);
+        //_mint(Admin, initialSupply);
     }
 
     //Recevoir des token contre des ethers
