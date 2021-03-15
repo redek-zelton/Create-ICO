@@ -6,7 +6,7 @@ contract TDToken is ERC20 {
 
     string public _name;    //Nom token
     string public _symbol;  // Symbol
-    //uint8 public _decimals; // decimals
+    uint8 public _decimals; // decimals
     //uint256 public _totalSupply; //totalSupply
     address payable public Admin; // addresse de l'administrateur
 
@@ -29,17 +29,17 @@ contract TDToken is ERC20 {
     ) ERC20('TDCOIN', 'TDC') public{
         Admin = admin;
         // all ICO supply is in Admin pool
+        //_setupDecimals(decimals);
         approve(Admin, initialSupply);
-        //_mint(Admin, initialSupply);
+        _mint(Admin, initialSupply);
     }
 
     //Recevoir des token contre des ethers
-    function getToken(uint256 amount, uint256 taux) onlyAllower internal virtual returns(bool success) {
+    function getToken(uint256 amount, uint256 taux) onlyAllower internal {
         require(amount > 0, "You need to send some ether");
         require(amount*taux <= balanceOf(Admin), "Verification de la pool");
         //emit Bought(amount*taux);
         transferFrom(Admin, msg.sender, amount*taux);
-        return true;
     }
     
     // Create a mapping to track allowed users
@@ -82,7 +82,7 @@ contract TDToken is ERC20 {
     }
 
     // admin mint and send to user
-    function mint(address _to, uint256 token) onlyAdmin internal{
+    function mint(address _to, uint256 token) onlyAdmin public{
         require(msg.sender == Admin); // only admin
         require(token > 0);
         require(_to !=address(0));
@@ -90,7 +90,7 @@ contract TDToken is ERC20 {
         _mint(_to, token);
         emit Minted(_to, token);
     }
-    function send_from_admin(address receiver,uint256 token) onlyAdmin internal returns(bool success) {
+    function send_from_admin(address receiver,uint256 token) onlyAdmin public {
         require(msg.sender == Admin); // only admin
         require(balanceOf(msg.sender) >= token); // suffisance de token
         if(allowlist[msg.sender])
@@ -102,7 +102,6 @@ contract TDToken is ERC20 {
             allowlistAddress(receiver);
             transfer(receiver, token);
         }
-        return true;
     }
 
  }
