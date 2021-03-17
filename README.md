@@ -110,9 +110,9 @@ npm install @truffle/hdwallet-provider
 ```
 * [follow instruction here](https://www.trufflesuite.com/tutorials/using-infura-custom-provider)
 * link truffle to infura :
-    truffle-config.js ==> networks
-    const HDWalletProvider = require("@truffle/hdwallet-provider");
-    const mnemonic = #mnemonic;
+
+In the `truffle-config.js` 
+
 ```javascript
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 const mnemonic = """; //#mnemonic"
@@ -156,7 +156,7 @@ Install the dependencies and devDependencies
 npm install
 ```
 Deploy localy with Ganache or in a testnet with Infura and Test
-* [Contract](https://ropsten.etherscan.io/address/0x5C0355Fa5d9f541c91FfE0812Ced0deeFFCE546c) - Send ether to this contract if you want to receive our token (Ropsten testnet) , ask us before to add you in the member list 
-Contract address : 0x565B26667C941004381dA56a23Fa04bFf35D39cb
+* [Contract](https://ropsten.etherscan.io/address/0x03553e45d727ace1841c12327e1bbbb268bcdd14) - Send ether to this contract if you want to receive our token (Ropsten testnet) , ask us before to add you in the member list 
+Contract address : 0x03553e45d727aCE1841c12327E1bbBB268BcdD14
 
 ## More

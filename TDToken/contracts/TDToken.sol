@@ -6,14 +6,14 @@ contract TDToken is ERC20 {
 
     //string public _name;    //Nom token
     //string public _symbol;  // Symbol
-    uint8 public _decimals; // decimals
+    uint8 public _decimals = 2; // decimals
     //uint256 public _totalSupply; //totalSupply
     address payable public Admin; // addresse de l'administrateur
 
     uint256 public convertion = 1000000000000000000; //Eth to Wei
-    uint256 private rate = 1000;
-    uint256 private rate1 =2000;
-    uint256 private rate2 = 400;
+    uint256 private rate = 5000/convertion;
+    uint256 private rate1 =6000/convertion;
+    uint256 private rate2 = 7000/convertion;
     /*
     struct Participant {
         uint256 totaltoken;
@@ -37,9 +37,10 @@ contract TDToken is ERC20 {
     //Recevoir des token contre des ethers
     function getToken(uint256 amount, uint256 taux) onlyAllower internal {
         require(amount > 0, "You need to send some ether");
-        require(amount*taux <= balanceOf(Admin), "Verification de la pool");
+        uint256 tokens = amount*taux;
+        require(tokens<= balanceOf(Admin), "Verification de la pool");
         //emit Bought(amount*taux);
-        transfer(msg.sender, amount*taux);
+        transfer(msg.sender, tokens);
     }
     
     // Create a mapping to track allowed users
