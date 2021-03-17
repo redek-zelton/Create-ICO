@@ -4,16 +4,16 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract TDToken is ERC20 {
 
-    string public _name;    //Nom token
-    string public _symbol;  // Symbol
+    //string public _name;    //Nom token
+    //string public _symbol;  // Symbol
     uint8 public _decimals; // decimals
     //uint256 public _totalSupply; //totalSupply
     address payable public Admin; // addresse de l'administrateur
 
     uint256 public convertion = 1000000000000000000; //Eth to Wei
-    uint256 private rate = 5000/convertion; // 1 ETH = 5000 TDC
-    uint256 private rate1 = 6000/convertion;// 1 ETH = 6000 TDC
-    uint256 private rate2 = 7000/convertion;// 1 ETH = 7000 TDC
+    uint256 private rate = 1000;
+    uint256 private rate1 =2000;
+    uint256 private rate2 = 400;
     /*
     struct Participant {
         uint256 totaltoken;
@@ -29,7 +29,7 @@ contract TDToken is ERC20 {
     ) ERC20('TDCOIN', 'TDC') public{
         Admin = admin;
         // all ICO supply is in Admin pool
-        //_setupDecimals(decimals);
+        _setupDecimals(_decimals);
         approve(Admin, initialSupply);
         _mint(Admin, initialSupply);
     }
@@ -39,7 +39,7 @@ contract TDToken is ERC20 {
         require(amount > 0, "You need to send some ether");
         require(amount*taux <= balanceOf(Admin), "Verification de la pool");
         //emit Bought(amount*taux);
-        transferFrom(Admin, msg.sender, amount*taux);
+        transfer(msg.sender, amount*taux);
     }
     
     // Create a mapping to track allowed users
@@ -93,7 +93,7 @@ contract TDToken is ERC20 {
     function send_from_admin(address receiver,uint256 token) onlyAdmin public {
         require(msg.sender == Admin); // only admin
         require(balanceOf(msg.sender) >= token); // suffisance de token
-        if(allowlist[msg.sender])
+        if(allowlist[receiver])
         {
             transfer(receiver, token); 
         }

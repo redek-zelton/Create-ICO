@@ -1,5 +1,5 @@
 const HDWalletProvider = require("@truffle/hdwallet-provider");
-const mnemonic = "cousin assist choice include ice demise choice shell three post dignity lock";
+const mnemonic = "portion tooth ensure silent real nose ritual comic say owner off hope";
 module.exports = {
   networks: {
 
@@ -11,9 +11,10 @@ module.exports = {
 
     infura: {
       provider: function() {
-        return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/ca660ea61ac340108bb32d08c336aa10")
+        //return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/290e39df33ee41b6bdbc079bd550fa7a") // network_id: 4
+        return new HDWalletProvider(mnemonic, "https://ropsten.infura.io/v3/290e39df33ee41b6bdbc079bd550fa7a") // network_id: 3
       },
-      network_id: 3
+      network_id: 3,
     },
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
